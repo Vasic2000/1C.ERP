@@ -1,13 +1,13 @@
 package cz.vasic2000;
 
+
 public class Main {
+    Stock stok;
+    Request request;
+    Offer offer;
 
     public static void main(String[] args) {
-	// write your code here
-        MakeClasses();
-    }
-
-    private static void MakeClasses() {
+        Stock stok = new Stock();
 
     }
 }
