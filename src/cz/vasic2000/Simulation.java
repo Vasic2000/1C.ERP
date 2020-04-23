@@ -10,11 +10,17 @@ public class Simulation {
     Manager manager;
     Offer offer;
 
-//    Main точка входа
+    //    Main точка входа
     public static void main(String[] args) {
         Simulation simulation = new Simulation();
-        System.out.println(simulation.stok.isOnStock(21));
-        System.out.println(simulation.stok.getQuantByID(21));
+
+        //        Проверка работоспособности начало
+        System.out.println(simulation.stok.isOnStock(5));
+        System.out.println(simulation.stok.getQuantByID(5));
+
+        System.out.println(simulation.stok.isOnStock(15));
+        System.out.println(simulation.stok.getQuantByID(15));
+        //        Проверка работоспособности конец
     }
 
 //    Конструктор
@@ -52,5 +58,4 @@ public class Simulation {
 
         return null;
     }
-
 }

@@ -7,12 +7,59 @@ public class Stock {
     private List<Item> stock = new ArrayList();
 
     public Stock() {
-        stock.add(new Item(1, "Valve DN15", 50, 12.0, "Valve company"));
-        stock.add(new Item(2, "Valve DN20", 50, 20.1, "Valve company"));
-        stock.add(new Item(3, "Valve DN25", 10, 26.4, "Valve company"));
-        stock.add(new Item(4, "Valve DN32", 10, 51.1, "Valve company"));
-        stock.add(new Item(5, "Valve DN40", 0, 101.1, "Valve company"));
-        stock.add(new Item(6, "Valve DN50", 0, 155.9, "Valve company"));
+        stock.add(new Item.Builder().
+                withID(1).
+                withName("Valve DN15").
+                withQuantity(50).
+                withPrice(15.7).
+                withSupplier("Valve company").
+                build()
+        );
+
+        stock.add(new Item.Builder().
+                withID(2).
+                withName("Valve DN20").
+                withQuantity(50).
+                withPrice(20.1).
+                withSupplier("Valve company").
+                build()
+        );
+
+        stock.add(new Item.Builder().
+                withID(3).
+                withName("Valve DN25").
+                withQuantity(10).
+                withPrice(26.4).
+                withSupplier("Valve company").
+                build()
+        );
+
+        stock.add(new Item.Builder().
+                withID(4).
+                withName("Valve DN32").
+                withQuantity(10).
+                withPrice(42.2).
+                withSupplier("Valve company").
+                build()
+        );
+
+        stock.add(new Item.Builder().
+                withID(5).
+                withName("Valve DN40").
+                withQuantity(0).
+                withPrice(89.9).
+                withSupplier("Valve company").
+                build()
+        );
+
+        stock.add(new Item.Builder().
+                withID(6).
+                withName("Valve DN50").
+                withQuantity(0).
+                withPrice(127.9).
+                withSupplier("Valve company").
+                build()
+        );
 
         stock.add(new Item(11, "Check valve DN15", 20, 13.11, "CheckValve company"));
         stock.add(new Item(12, "Check valve DN20", 20, 15.99, "CheckValve company"));
