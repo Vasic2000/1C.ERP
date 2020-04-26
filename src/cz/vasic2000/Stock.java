@@ -1,5 +1,8 @@
 package cz.vasic2000;
 
+import cz.vasic2000.item.Item;
+import cz.vasic2000.item.itemBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +10,7 @@ public class Stock {
     private List<Item> stock = new ArrayList();
 
     public Stock() {
-        stock.add(new Item.Builder().
+        stock.add(new itemBuilder().
                 withID(1).
                 withName("Valve DN15").
                 withQuantity(50).
@@ -16,7 +19,7 @@ public class Stock {
                 build()
         );
 
-        stock.add(new Item.Builder().
+        stock.add(new itemBuilder().
                 withID(2).
                 withName("Valve DN20").
                 withQuantity(50).
@@ -25,7 +28,7 @@ public class Stock {
                 build()
         );
 
-        stock.add(new Item.Builder().
+        stock.add(new itemBuilder().
                 withID(3).
                 withName("Valve DN25").
                 withQuantity(10).
@@ -34,7 +37,7 @@ public class Stock {
                 build()
         );
 
-        stock.add(new Item.Builder().
+        stock.add(new itemBuilder().
                 withID(4).
                 withName("Valve DN32").
                 withQuantity(10).
@@ -43,7 +46,7 @@ public class Stock {
                 build()
         );
 
-        stock.add(new Item.Builder().
+        stock.add(new itemBuilder().
                 withID(5).
                 withName("Valve DN40").
                 withQuantity(0).
@@ -52,7 +55,7 @@ public class Stock {
                 build()
         );
 
-        stock.add(new Item.Builder().
+        stock.add(new itemBuilder().
                 withID(6).
                 withName("Valve DN50").
                 withQuantity(0).
@@ -78,14 +81,14 @@ public class Stock {
 
     public boolean isOnStock(int id) {
         for(Item item : stock) {
-            if(item.id == id) return true;
+            if ((item.getId() == id) && (item.getQuantity() != 0)) return true;
         }
         return false;
     }
 
     public int getQuantByID(int id) {
         for(Item item : stock) {
-            if(item.id == id) return item.quantity;
+            if(item.getId() == id) return item.getQuantity();
         }
         return -1;
     }
