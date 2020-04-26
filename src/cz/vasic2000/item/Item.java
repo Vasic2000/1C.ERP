@@ -1,16 +1,18 @@
 package cz.vasic2000.item;
 
+import cz.vasic2000.suppliers.Supplier;
+
 public class Item {
     int id;
     String name;
     int quantity;
     double price;
-    String supplier;
+    Supplier supplier;
 
     public Item() {
     }
 
-    public Item(int id, String name, int quantity, double price, String supplier) {
+    public Item(int id, String name, int quantity, double price, Supplier supplier) {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
@@ -35,7 +37,7 @@ public class Item {
         return price;
     }
 
-    public String getSupplier() {
+    public Supplier getSupplier() {
         return supplier;
     }
 }

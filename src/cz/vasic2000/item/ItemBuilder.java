@@ -1,33 +1,35 @@
 package cz.vasic2000.item;
 
-public class itemBuilder {
+import cz.vasic2000.suppliers.Supplier;
+
+public class ItemBuilder {
     private Item newItem;
 
-    public itemBuilder() {
+    public ItemBuilder() {
         newItem = new Item();
     }
 
-    public itemBuilder withID(int id) {
+    public ItemBuilder withID(int id) {
         newItem.id = id;
         return this;
     }
 
-    public itemBuilder withName(String name) {
+    public ItemBuilder withName(String name) {
         newItem.name = name;
         return this;
     }
 
-    public itemBuilder withQuantity(int quantity) {
+    public ItemBuilder withQuantity(int quantity) {
         newItem.quantity = quantity;
         return this;
     }
 
-    public itemBuilder withPrice(double price) {
+    public ItemBuilder withPrice(double price) {
         newItem.price = price;
         return this;
     }
 
-    public itemBuilder withSupplier(String supplier) {
+    public ItemBuilder withSupplier(Supplier supplier) {
         newItem.supplier = supplier;
         return this;
     }

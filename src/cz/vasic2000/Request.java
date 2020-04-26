@@ -1,18 +1,18 @@
 package cz.vasic2000;
 
-import javax.swing.*;
+import java.util.Map;
 import java.util.HashMap;
 
+import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.YES_OPTION;
 
 public class Request {
-    HashMap<String, Integer> request = new HashMap<String, Integer>();
 
-    public Request makeRequest() {
+    public Map<String, Integer> makeRequest() {
         String[] items = {"Valve", "Check valve", "Filter"};
         String[] DN = {"DN15", "DN20", "DN25", "DN32", "DN40", "DN50"};
 
-        Request request = new Request();
+        Map<String, Integer> request = new HashMap<>();
 
         do {
             String str1, str2;
@@ -33,13 +33,8 @@ public class Request {
                     error = true;
                 }
             } while (error);
-            request.add(str1 + " " + str2, quantity);
+            request.put(str1 + " " + str2, quantity);
         } while (JOptionPane.showConfirmDialog(null, "Заказать что-то ещё?")==YES_OPTION);
-
         return request;
-    }
-
-    public void add(String name, Integer quantity) {
-        request.put(name, quantity);
     }
 }
