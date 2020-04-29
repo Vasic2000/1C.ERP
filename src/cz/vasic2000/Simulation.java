@@ -1,61 +1,31 @@
 package cz.vasic2000;
 
-import javax.swing.*;
+import cz.vasic2000.item.Item;
 
-import static javax.swing.JOptionPane.YES_OPTION;
+import java.util.Map;
 
 public class Simulation {
-    Request request;
-    Stock stok;
-    Manager manager;
-    Offer offer;
-
     //    Main точка входа
     public static void main(String[] args) {
-        Simulation simulation = new Simulation();
+        Stock stok = new Stock();
+        Manager manager = new Manager();
 
         //        Проверка работоспособности начало
-        System.out.println(simulation.stok.isOnStock(5));
-        System.out.println(simulation.stok.getQuantByID(5));
-
-        System.out.println(simulation.stok.isOnStock(15));
-        System.out.println(simulation.stok.getQuantByID(15));
+        System.out.println(stok.isOnStock("Valve DN15"));
+        System.out.println(stok.getQuantByName("Valve DN15"));
+        System.out.println(stok.isOnStock("Valve DN50"));
         //        Проверка работоспособности конец
-    }
 
-//    Конструктор
-    public Simulation() {
-        this.stok = new Stock();
-        this.request = makeRequest();
-        this.manager = new Manager();
-        this.offer = manager.makeOffer(request);
-     }
+        Request request = new Request();
+        Map<String, Integer> order = request.makeRequest();
+        Map<Item, Integer> offer = manager.makeOffer(order);
 
-    private static Request makeRequest() {
-        String[] items = {"Valve", "Check valve", "Filter"};
-        String[] DN = {"DN15", "DN20", "DN25", "DN32", "DN40", "DN50"};
-
-        do {
-            String str1, str2;
-            int quantity;
-            boolean error;
-
-            str1 = (String) JOptionPane.showInputDialog(null, "Выберите", "Заказ",
-                    JOptionPane.QUESTION_MESSAGE, null, items, items[0]);
-            str2 = (String) JOptionPane.showInputDialog(null, "Размер?", "Заказ",
-                    JOptionPane.QUESTION_MESSAGE, null, DN, DN[0]);
-            do {
-                try {
-                    quantity = Integer.parseInt((String) JOptionPane.showInputDialog(null, "Сколько?", "Заказ",
-                            JOptionPane.QUESTION_MESSAGE, null, null, "1"));
-                    error = false;
-                } catch (NumberFormatException e) {
-                    JOptionPane.showMessageDialog(null, "Нужно целое число", "Заказ", JOptionPane.WARNING_MESSAGE);
-                    error = true;
-                }
-            } while (error);
-        } while (JOptionPane.showConfirmDialog(null, "Заказать что-то ещё?")==YES_OPTION);
-
-        return null;
+        //        Проверка работоспособности начало
+        for(Map.Entry<Item, Integer> entry : offer.entrySet()) {
+            System.out.println(entry.getKey().getName()
+                    + " : " + entry.getValue()
+                    + " = " +  entry.getKey().getPrice()*entry.getValue());
+        }
+        //        Проверка работоспособности конец
     }
 }
