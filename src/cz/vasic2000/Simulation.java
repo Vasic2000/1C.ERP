@@ -1,19 +1,32 @@
 package cz.vasic2000;
 
 import cz.vasic2000.item.Item;
+import cz.vasic2000.suppliers.CheckValveSupplier;
+import cz.vasic2000.suppliers.FiltersSupplier;
+import cz.vasic2000.suppliers.Supplier;
+import cz.vasic2000.suppliers.ValveSupplier;
 
 import java.util.Map;
 
 public class Simulation {
+    Supplier valveSupplier;
+    Supplier checkValveSupplier;
+    Supplier filterSupplier;
+    Stock stock;
+
     //    Main точка входа
     public static void main(String[] args) {
-        Stock stok = new Stock();
-        Manager manager = new Manager();
+        Simulation sm = new Simulation();
+        sm.stock = new Stock(sm);
+        sm.valveSupplier = new ValveSupplier();
+        sm.checkValveSupplier = new CheckValveSupplier();
+        sm.filterSupplier = new FiltersSupplier(sm);
+        Manager manager = new Manager(sm.stock);
 
         //        Проверка работоспособности начало
-        System.out.println(stok.isOnStock("Valve DN15"));
-        System.out.println(stok.getQuantByName("Valve DN15"));
-        System.out.println(stok.isOnStock("Valve DN50"));
+        System.out.println(sm.stock.isOnStock("Valve DN15"));
+        System.out.println(sm.stock.getQuantByName("Valve DN15"));
+        System.out.println(sm.stock.isOnStock("Valve DN50"));
         //        Проверка работоспособности конец
 
         Request request = new Request();
@@ -27,5 +40,9 @@ public class Simulation {
                     + " = " +  entry.getKey().getPrice()*entry.getValue());
         }
         //        Проверка работоспособности конец
+    }
+
+    public Stock getStock() {
+        return stock;
     }
 }

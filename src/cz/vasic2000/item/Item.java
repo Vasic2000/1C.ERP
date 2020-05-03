@@ -6,6 +6,7 @@ public class Item {
     int id;
     String name;
     int quantity;
+
     double price;
     Supplier supplier;
 
@@ -39,5 +40,9 @@ public class Item {
 
     public Supplier getSupplier() {
         return supplier;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }
